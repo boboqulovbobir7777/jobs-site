@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
+@import "./reset";
+@mixin text($fontsize, $fontweight, $fontcolor) {
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: $fontsize;
+  font-weight: $fontweight;
+  color: $fontcolor;
+}
+@mixin flex($js, $ai, $gap) {
+  display: flex;
+  justify-content: $js;
+  align-items: $ai;
+  gap: $gap;
+}
+@mixin wrapper{
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 40px;
+}
+body {
+  background-color: rgba(18, 23, 33, 1);
+}
+.header {
+  height: 162px;
+  background-image: url(../img/header-background.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: cover;
+  border-radius: 0 0 0 100px;
+  position: relative;
+  margin-bottom: 144px;
+  @media (max-width: 1190px) {
+    margin-bottom: 110px;
+  }
+  .logo {
+    cursor: pointer;
+  }
+  .header-wrapper {
+    @include wrapper;
+    .head {
+      @include flex(space-between, center, 0);
+      .them-seting {
+        @include flex(stretch, center, 16px);
+        .them-seting_choose {
+          cursor: pointer;
+        }
+      }
+    }
+    .navbar {
+      background-color: rgba(25, 32, 45, 1);
+      display: grid;
+      grid-template-rows: 80px;
+      grid-template-columns:
+        minmax(223px, 464px)
+        minmax(214px, 301px)
+        minmax(252px, 345px);
+      align-items: center;
+      position: absolute;
+      bottom: -40px;
+      border-radius: 6px;
+      margin-right: 40px;
+      input[type="text"] {
+        border: none;
+        outline: none;
+        background: none;
+        height: 80px;
+        width: 100%;
+        padding: 0 16px;
+        cursor: pointer;
+        @include text(16px, 400, rgba(255, 255, 255, 1));
+        &::placeholder {
+          @include text(16px, 400, rgba(255, 255, 255, 0.5));
+        }
+      }
+      .navbar-filter_search {
+        display: flex;
+        padding-left: 32px;
+        border-right: 1px solid rgba(110, 128, 152, 0.5);
+        .search-icon {
+          align-self: center;
+        }
+        .filter-search-text_2 {
+          display: none;
+        }
+        @media (max-width: 1080px) {
+          .filter-search-text {
+            display: none;
+          }
+          .filter-search-text_2 {
+            display: block;
+          }
+        }
+      }
+      .navbar-filter_location {
+        display: flex;
+        padding-left: 23px;
+        border-right: 1px solid rgba(110, 128, 152, 0.5);
+        .location-icon {
+          align-self: center;
+        }
+      }
+      .navbar-filter_time {
+        @include flex(space-between, center, 26px);
+        padding-left: 32px;
+        padding-right: 16px;
+        .full-time-only1 {
+          @include flex(stretch, center, 16px);
+          label {
+            cursor: pointer;
+            @include text(16px, 700, rgba(255, 255, 255, 1));
+          }
+          input[type="checkbox"] {
+            transform: scale(1.5);
+            cursor: pointer;
+            margin: 0;
+          }
+          .time-lebel2 {
+            display: none;
+          }
+          @media (max-width: 1040px) {
+            .time-lebel1 {
+              display: none;
+            }
+            .time-lebel2 {
+              display: block;
+            }
+          }
+        }
+        .full-time-only2 {
+          display: none;
+        }
+        button {
+          padding: 16px 36px;
+          @include text(16px, 700, rgba(255, 255, 255, 1));
+          background: rgba(89, 100, 224, 1);
+          border: none;
+          border-radius: 5px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+          @media (hover: hover) {
+            &:hover {
+              background: rgba(147, 155, 244, 1);
+            }
+          }
+          @media (hover: none) {
+            &:active {
+              background: rgba(147, 155, 244, 1);
+            }
+          }
+          @media (max-width: 920px) {
+            padding: 16px 14px;
+          }
+        }
+        .navbar-button-mobile {
+          display: none;
+        }
+      }
+    }
+    @media (max-width: 767px) {
+      padding: 32px 24px;
+      .navbar {
+        margin-right: 24px;
+        grid-template-columns:
+          minmax(187px, 344px)
+          minmax(140px, 344px);
+        .navbar-filter_search {
+          border: none;
+        }
+        .navbar-filter_location {
+          display: none;
+        }
+        .navbar-filter_time {
+          justify-content: end;
+          gap: 24px;
+          .full-time-only1 {
+            display: none;
+          }
+          .full-time-only2 {
+            display: block;
+          }
+          .navbar-button {
+            display: none;
+          }
+          .navbar-button-mobile {
+            display: inline;
+            padding: 16px 14px 10px;
+          }
+        }
+      }
+    }
+    .navbar-info {
+      position: absolute;
+      left: 50%;
+      max-width: 730px;
+      bottom: -100px;
+      margin: 0 auto;
+      transform: translateX(-50%);
+      height: 140px;
+      background-color: rgba(25, 32, 45, 1);
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns:
+        minmax(140px, 140px)
+        minmax(158px, 158px)
+        minmax(391px, 432px);
+      align-items: center;
+      .navbar-company-name {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        padding: 0 40px;
+        span:first-child {
+          @include text(24px, 700, rgba(255, 255, 255, 1));
+        }
+        span:last-child {
+          @include text(16px, 400, rgba(110, 128, 152, 1));
+        }
+      }
+      .link-company-site {
+        justify-self: end;
+        margin-right: 43px;
+        padding: 20px 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition-duration: 0.4s;
+        a {
+          @include text(16px, 700, rgba(255, 255, 255, 1));
+        }
+        @media (hover: hover) {
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+          }
+        }
+        @media (hover: none) {
+          &:active {
+            background-color: rgba(255, 255, 255, 0.25);
+          }
+        }
+      }
+    }
+  }
+}
+.main {
+  @include wrapper;
+  padding: 0 40px 40px 40px;
+  @media (max-width: 767px) {
+    padding: 0 24px 24px 24px;
+  }
+  .jobs-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(339px, 350px));
+    grid-auto-rows: 228px;
+    justify-content: center;
+    column-gap: 30px;
+    row-gap: 65px;
+    margin-bottom: 56px;
+    @media (max-width: 810px) {
+      grid-template-columns: repeat(auto-fill, minmax(339px, 339px));
+      column-gap: 10px;
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: minmax(327px, 100%);
+      row-gap: 49px;
+    }
+    .job-info {
+      padding: 49px 0px 36px 32px;
+      border-radius: 6px;
+      background-color: rgba(25, 32, 45, 1);
+      position: relative;
+      .job-company-logo {
+        position: absolute;
+        top: -25px;
+      }
+      p {
+        @include text(16px, 400, #6e8098);
+        margin-bottom: 16px;
+        display: flex;
+        gap: 6px;
+      }
+      h5 {
+        a {
+          @include text(20px, 700, #fff);
+          transition-duration: 0.4s;
+        }
+        margin-bottom: 17px;
+        @media (hover: hover) {
+          &:hover {
+            a {
+              color: rgba(110, 128, 152, 1);
+            }
+          }
+        }
+        @media (hover: none) {
+          &:active {
+            a {
+              color: rgba(110, 128, 152, 1);
+            }
+          }
+        }
+      }
+      h6 {
+        a {
+          @include text(16px, 400, rgba(110, 128, 152, 1));
+        }
+        margin-bottom: 44px;
+      }
+      h4 {
+        @include text(14px, 700, rgba(89, 100, 224, 1));
+      }
+    }
+  }
+  .load-more {
+    @include flex(center, stretch, 0);
+    button {
+      padding: 16px 30px;
+      border: none;
+      @include text(16px, 700, rgba(255, 255, 255, 1));
+      background: rgba(89, 100, 224, 1);
+      border-radius: 5px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      @media (hover: hover) {
+        &:hover {
+          background: rgba(147, 155, 244, 1);
+        }
+      }
+      @media (hover: none) {
+        &:active {
+          background: rgba(147, 155, 244, 1);
+        }
+      }
+    }
+  }
+}
